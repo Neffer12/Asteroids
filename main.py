@@ -33,6 +33,9 @@ def main():
 
         #Control frame rate
         dt = clock.tick(60) / 1000
+
+        player.update(dt)
+        
         
 
 
