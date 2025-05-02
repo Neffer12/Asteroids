@@ -5,6 +5,9 @@ import pygame
 from constants import *
 from player import Player
 
+updatable = pygame.sprite.Group()
+drawable = pygame.sprite.Group()
+Player.containers = (updatable, drawable)
 
 def main():
     pygame.init()
@@ -25,19 +28,18 @@ def main():
         #Fill the screen with black
         screen.fill("black")
 
+        updatable.update(dt)
+
         #Draw player
-        player.draw(screen)
+        for entity in drawable:
+            entity.draw(screen)
 
         #Update display
         pygame.display.flip()
 
         #Control frame rate
         dt = clock.tick(60) / 1000
-
-        player.update(dt)
-        
-        
-
+      
 
 
 if __name__ == "__main__":
