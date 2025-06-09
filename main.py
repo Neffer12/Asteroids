@@ -52,8 +52,10 @@ def main():
             for bullet in bullets:
                 if bullet.collision(asteroid):
                     bullet.kill()
-                    asteroid.kill()
-                
+                    result = asteroid.split()
+                    if result is not None:
+                        asteroid1, asteroid2 = result
+                        asteroids.add(*result)
 
         #Draw player
         for entity in drawable:
@@ -64,8 +66,6 @@ def main():
 
         #Control frame rate
         dt = clock.tick(60) / 1000
-      
-
 
 if __name__ == "__main__":
     main()
